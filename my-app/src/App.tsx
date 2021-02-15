@@ -1,7 +1,12 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import ReactDOM from 'react-dom';
+interface buttonTypes  {
+  name:string;
+  first_color:string
+  second_color:string
+  count:number
+}
 
 
 function App() {
@@ -14,27 +19,27 @@ function App() {
 
   const difficultyArr = [
     {
-      i: "easy",
-      color: "green",
-      color2: "red",
+      name: "easy",
+      first_color: "green",
+      second_color: "red",
       count: countEasy,
     }, 
     {
-      i: "ok",
-      color: "yellow",
-      color2: "orange",
+      name: "ok",
+      first_color: "yellow",
+      second_color: "orange",
       count: countOk,
     }, 
     {
-      i: "difficult",
-      color: "orange",
-      color2: "yellow",
+      name: "difficult",
+      first_color: "orange",
+      second_color: "yellow",
       count: countDifficult,
     },
     {
-      i: "too difficult",
-      color: "red",
-      color2: "green",
+      name: "too difficult",
+      first_color: "red",
+      second_color: "green",
       count:countTooDifficult
     }
   ];
@@ -59,16 +64,16 @@ function App() {
     }
 
   
-  const buttonMaker = ( {i, color,color2,count} : {i: string, color: string, color2:string, count:number} ) => {
+  const buttonMaker = ( {name, first_color,second_color,count} : buttonTypes ) => {
     const all = [countDifficult,countEasy,countOk,countTooDifficult]
     const largest = Math.max(...all)
     if (largest === count && largest !== 0) {
-      return <button className={`button ${countTruth?color:color2}`} onClick = {() => 
-        alertCaller(i)}>{i} :)</button>
+      return <button className={`button ${countTruth?first_color:second_color}`} onClick = {() => 
+        alertCaller(name)}>{name} :)</button>
     } else {
     return (
-       <button className={`button ${countTruth?color:color2}`} onClick = {() => 
-    alertCaller(i)}>{i}</button> 
+       <button className={`button ${countTruth?first_color:second_color}`} onClick = {() => 
+    alertCaller(name)}>{name}</button> 
     )}
   }
 
